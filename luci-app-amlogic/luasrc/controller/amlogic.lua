@@ -9,7 +9,7 @@ function index()
 	page.dependent = true
 	page.acl_depends = { "luci-app-amlogic" }
 
-	local platfrom = luci.sys.exec("cat /etc/flippy-openwrt-release 2>/dev/null | grep PLATFORM | awk -F'=' '{print $2}' | grep -oE '(amlogic|rockchip|allwinner|qemu)'") or "Unknown"
+	local platfrom = luci.sys.exec("cat /etc/vsocks-release 2>/dev/null | grep PLATFORM | awk -F'=' '{print $2}' | grep -oE '(amlogic|rockchip|allwinner|qemu)'") or "Unknown"
 	entry({ "admin", "system", "amlogic", "info" }, cbi("amlogic/amlogic_info"), _("Amlogic Service"), 1).leaf = true
 	if (string.find(platfrom, "amlogic")) ~= nil then
 	entry({ "admin", "system", "amlogic", "install" }, cbi("amlogic/amlogic_install"), _("Install OpenWrt"), 2).leaf = true
@@ -82,7 +82,7 @@ else
 end
 
 --Device identification
-device_platfrom = trim(luci.sys.exec("cat /etc/flippy-openwrt-release 2>/dev/null | grep PLATFORM | awk -F'=' '{print $2}' | grep -oE '(amlogic|rockchip|allwinner|qemu)'")) or "Unknown"
+device_platfrom = trim(luci.sys.exec("cat /etc/vsocks-release 2>/dev/null | grep PLATFORM | awk -F'=' '{print $2}' | grep -oE '(amlogic|rockchip|allwinner|qemu)'")) or "Unknown"
 if (string.find(device_platfrom, "rockchip")) ~= nil then
 	device_install_script = ""
 	device_update_script = "openwrt-update-rockchip"

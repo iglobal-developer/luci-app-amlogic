@@ -25,7 +25,7 @@
 # Receive one-key command related parameters
 AUTO_MAINLINE_UBOOT="no"
 # Set the release check file
-release_file="/etc/flippy-openwrt-release"
+release_file="/etc/vsocks-release"
 # Current device model
 MYDEVICE_NAME="$(cat /proc/device-tree/model | tr -d '\000')"
 #
@@ -222,11 +222,11 @@ update_uboot() {
     fi
 
     # Update release file
-    sed -i '/KERNEL_VERSION/d' /etc/flippy-openwrt-release 2>/dev/null
-    echo "KERNEL_VERSION='${kernel_name}'" >>/etc/flippy-openwrt-release 2>/dev/null
+    sed -i '/KERNEL_VERSION/d' /etc/vsocks-release 2>/dev/null
+    echo "KERNEL_VERSION='${kernel_name}'" >>/etc/vsocks-release 2>/dev/null
     #
-    sed -i '/K510/d' /etc/flippy-openwrt-release 2>/dev/null
-    echo "K510='${K510}'" >>/etc/flippy-openwrt-release 2>/dev/null
+    sed -i '/K510/d' /etc/vsocks-release 2>/dev/null
+    echo "K510='${K510}'" >>/etc/vsocks-release 2>/dev/null
     #
     sed -i "s/ Kernel.*/ Kernel: ${kernel_name}/g" /etc/banner 2>/dev/null
 

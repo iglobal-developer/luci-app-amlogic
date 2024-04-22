@@ -81,7 +81,7 @@ elif dmesg | grep 'rockchip' >/dev/null 2>&1; then
 elif dmesg | grep 'sun50i-h6' >/dev/null 2>&1; then
     PLATFORM="allwinner"
 else
-    source /etc/flippy-openwrt-release
+    source /etc/vsocks-release
     case $PLATFORM in 
         amlogic|rockchip|allwinner|qemu-aarch64) : ;;
 	*) echo "Unknown platform, only support amlogic or rockchip or allwinner h6 or qemu-aarch64!"
@@ -433,7 +433,7 @@ migrate_snapshot() {
                 cp ${SNAPSHOT_PRESTR}etc-000/fstab ${SNAPSHOT_PRESTR}${old_snap_name}/
                 cp ${SNAPSHOT_PRESTR}etc-000/openwrt_release ${SNAPSHOT_PRESTR}${old_snap_name}/
                 cp ${SNAPSHOT_PRESTR}etc-000/openwrt_version ${SNAPSHOT_PRESTR}${old_snap_name}/
-                cp ${SNAPSHOT_PRESTR}etc-000/flippy-openwrt-release ${SNAPSHOT_PRESTR}${old_snap_name}/
+                cp ${SNAPSHOT_PRESTR}etc-000/vsocks-release ${SNAPSHOT_PRESTR}${old_snap_name}/
                 cp ${SNAPSHOT_PRESTR}etc-000/banner ${SNAPSHOT_PRESTR}${old_snap_name}/banner
                 btrfs property set -ts ${SNAPSHOT_PRESTR}${old_snap_name} ro true
                 echo "The migration is complete, if you want to apply the snapshot [ ${old_snap_name} ], please use the restore snapshot function."

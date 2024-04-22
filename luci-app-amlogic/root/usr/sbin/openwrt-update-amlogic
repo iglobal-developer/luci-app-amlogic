@@ -23,8 +23,8 @@ MYDEVICE_NAME=$(cat /proc/device-tree/model | tr -d '\000')
 if [[ -z "${MYDEVICE_NAME}" ]]; then
     echo "The device name is empty and cannot be recognized."
     exit 1
-elif [[ ! -f "/etc/flippy-openwrt-release" ]]; then
-    echo "The [ /etc/flippy-openwrt-release ] file is missing."
+elif [[ ! -f "/etc/vsocks-release" ]]; then
+    echo "The [ /etc/vsocks-release ] file is missing."
     exit 1
 else
     echo -e "Current device: ${MYDEVICE_NAME} [ amlogic ]"
@@ -336,16 +336,16 @@ K510="1"
 [[ "$(hexdump -n 15 -x "${P1}/zImage" 2>/dev/null | head -n 1 | awk '{print $7}')" == "0108" ]] && K510="0"
 echo -e "K510 [ ${K510} ]"
 
-# flippy-openwrt-release info
+# vsocks-release info
 UBOOT_OVERLOAD=""
 MAINLINE_UBOOT=""
 ANDROID_UBOOT=""
 env_openwrt_file=""
 
-if [ -f "${P2}/etc/flippy-openwrt-release" ]; then
-    env_openwrt_file="${P2}/etc/flippy-openwrt-release"
-elif [ -f "/etc/flippy-openwrt-release" ]; then
-    env_openwrt_file="/etc/flippy-openwrt-release"
+if [ -f "${P2}/etc/vsocks-release" ]; then
+    env_openwrt_file="${P2}/etc/vsocks-release"
+elif [ -f "/etc/vsocks-release" ]; then
+    env_openwrt_file="/etc/vsocks-release"
 else
     env_openwrt_file=""
 fi

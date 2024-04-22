@@ -51,8 +51,8 @@ MYDEVICE_NAME=$(cat /proc/device-tree/model | tr -d '\000')
 if [[ -z "${MYDEVICE_NAME}" ]]; then
     echo "The device name is empty and cannot be recognized."
     exit 1
-elif [[ ! -f "/etc/flippy-openwrt-release" ]]; then
-    echo "The [ /etc/flippy-openwrt-release ] file is missing."
+elif [[ ! -f "/etc/vsocks-release" ]]; then
+    echo "The [ /etc/vsocks-release ] file is missing."
     exit 1
 else
     echo -e "Current device: ${MYDEVICE_NAME} [ amlogic ]"
@@ -554,21 +554,21 @@ while [ $i -le $max_try ]; do
         echo "Copy complete."
         sync
 
-        echo "Update the relevant parameters of flippy-openwrt-release"
-        sed -i '/FDTFILE/d' etc/flippy-openwrt-release 2>/dev/null
-        echo "FDTFILE='${FDTFILE}'" >>etc/flippy-openwrt-release 2>/dev/null
+        echo "Update the relevant parameters of vsocks-release"
+        sed -i '/FDTFILE/d' etc/vsocks-release 2>/dev/null
+        echo "FDTFILE='${FDTFILE}'" >>etc/vsocks-release 2>/dev/null
 
-        sed -i '/UBOOT_OVERLOAD/d' etc/flippy-openwrt-release 2>/dev/null
-        echo "UBOOT_OVERLOAD='${UBOOT_OVERLOAD}'" >>etc/flippy-openwrt-release 2>/dev/null
+        sed -i '/UBOOT_OVERLOAD/d' etc/vsocks-release 2>/dev/null
+        echo "UBOOT_OVERLOAD='${UBOOT_OVERLOAD}'" >>etc/vsocks-release 2>/dev/null
 
-        sed -i '/MAINLINE_UBOOT/d' etc/flippy-openwrt-release 2>/dev/null
-        echo "MAINLINE_UBOOT='${MAINLINE_UBOOT}'" >>etc/flippy-openwrt-release 2>/dev/null
+        sed -i '/MAINLINE_UBOOT/d' etc/vsocks-release 2>/dev/null
+        echo "MAINLINE_UBOOT='${MAINLINE_UBOOT}'" >>etc/vsocks-release 2>/dev/null
 
-        sed -i '/ANDROID_UBOOT/d' etc/flippy-openwrt-release 2>/dev/null
-        echo "ANDROID_UBOOT='${ANDROID_UBOOT}'" >>etc/flippy-openwrt-release 2>/dev/null
+        sed -i '/ANDROID_UBOOT/d' etc/vsocks-release 2>/dev/null
+        echo "ANDROID_UBOOT='${ANDROID_UBOOT}'" >>etc/vsocks-release 2>/dev/null
 
-        sed -i '/SOC/d' etc/flippy-openwrt-release 2>/dev/null
-        echo "SOC='${AMLOGIC_SOC}'" >>etc/flippy-openwrt-release 2>/dev/null
+        sed -i '/SOC/d' etc/vsocks-release 2>/dev/null
+        echo "SOC='${AMLOGIC_SOC}'" >>etc/vsocks-release 2>/dev/null
         echo "Update complete."
         sync
 

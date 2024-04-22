@@ -109,8 +109,8 @@ update_kernel() {
     rm -f ${kernel_path}/*.tar.gz ${kernel_path}/sha256sums 2>/dev/null
 
     # Update release file
-    sed -i '/KERNEL_VERSION/d' /etc/flippy-openwrt-release 2>/dev/null
-    echo "KERNEL_VERSION='${kernel_name}'" >>/etc/flippy-openwrt-release 2>/dev/null
+    sed -i '/KERNEL_VERSION/d' /etc/vsocks-release 2>/dev/null
+    echo "KERNEL_VERSION='${kernel_name}'" >>/etc/vsocks-release 2>/dev/null
     # Update banner file
     sed -i "s/ Kernel.*/ Kernel: ${kernel_name}/g" /etc/banner 2>/dev/null
 

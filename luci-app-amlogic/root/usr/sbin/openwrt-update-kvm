@@ -34,7 +34,7 @@ done
 echo "Check passed"
 
 # Current device model
-source /etc/flippy-openwrt-release
+source /etc/vsocks-release
 if [[ -z "${PLATFORM}" ]]; then
     echo "The platform is empty."
     exit 1
